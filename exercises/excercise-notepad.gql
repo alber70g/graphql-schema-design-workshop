@@ -1,0 +1,33 @@
+    interface CartItem {
+        itemId: ID!
+        quantity: Int!
+        price: Double!
+    }
+
+    type Product implements CartItem implements Node {
+        itemId: ID!
+        quantity: Int!
+        price: Double!
+        category: ProductCategory!
+        description: String
+    }
+
+    type GiftCard implements CartItem {
+        itemId: ID!
+        quantity: Int!
+        price: Double!
+    }
+
+    interface Node {
+      id: ID!
+    }
+
+
+    type Query { 
+      node(id: ID): Node
+      nodes(id: ID): Node
+      productById(id: ID)
+      productsById(id: [ID])
+    }
+
+    union Something = Anything | SomethingElse
